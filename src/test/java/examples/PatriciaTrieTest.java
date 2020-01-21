@@ -16,7 +16,7 @@ import static org.junit.Assume.assumeTrue;
 public class PatriciaTrieTest {
     
     @Fuzz
-    public void testTrie2Map(Map<String, Integer> map, String key) {
+    public void testMap2Trie(Map<String, Integer> map, String key) {
         assumeTrue(map.containsKey(key));
         // Create new trie with input `map`
         Trie trie = new PatriciaTrie(map);

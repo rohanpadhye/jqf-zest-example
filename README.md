@@ -9,7 +9,7 @@ Run `mvn test-compile` to compile the test.
 ## Fuzzing with Zest
 
 ```
-mvn jqf:fuzz -Dclass=examples.PatriciaTrieTest -Dmethod=testTrie2Map -Dtime=1m
+mvn jqf:fuzz -Dclass=examples.PatriciaTrieTest -Dmethod=testMap2Trie -Dtime=1m
 ```
 
 Run the above to fuzz with JQF running the Zest engine for 1 minute. It should usually take just a few seconds to find the failure, but there is of course randomness involved. CTRL+C to stop fuzzing at any time.
@@ -17,7 +17,7 @@ Run the above to fuzz with JQF running the Zest engine for 1 minute. It should u
 If the number of "Unique Failures" reported is non-zero, then run the following to repro the failing test case:
 
 ```
-mvn jqf:repro -Dclass=examples.PatriciaTrieTest -Dmethod=testTrie2Map -Dinput=target/fuzz-results/examples.PatriciaTrieTest/testTrie2Map/failures/id_000000 -DprintArgs
+mvn jqf:repro -Dclass=examples.PatriciaTrieTest -Dmethod=testMap2Trie -Dinput=target/fuzz-results/examples.PatriciaTrieTest/testMap2Trie/failures/id_000000 -DprintArgs
 ```
 
 You will most likely find bug [COLLECTIONS-714](https://issues.apache.org/jira/browse/COLLECTIONS-714). 
@@ -30,7 +30,7 @@ Run `mvn:test` to run vanilla junit-quickcheck. This will most likely lead to an
 
 You can also the JQF maven plugin to run this test without the use of code coverage feedback, but using the same status screen as when running coverage-guided fuzzing:
 ```
-mvn jqf:fuzz -Dclass=examples.PatriciaTrieTest -Dmethod=testTrie2Map -Dtime=1m -Dblind
+mvn jqf:fuzz -Dclass=examples.PatriciaTrieTest -Dmethod=testMap2Trie -Dtime=1m -Dblind
 ```
 
 Running the above command in most cases will result in no interesting inputs being generated. It is very very unlikely that you will encounter a failing test case using blind fuzzing.
