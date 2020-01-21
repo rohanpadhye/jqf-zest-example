@@ -22,6 +22,8 @@ mvn jqf:repro -Dclass=examples.PatriciaTrieTest -Dmethod=testTrie2Map -Dinput=ta
 
 You will most likely find bug [COLLECTIONS-714](https://issues.apache.org/jira/browse/COLLECTIONS-714). 
 
+Since this is an extreme test, it is possible that sometimes JQF does not find a failure in the first attempt. If so, try running the `mvn jqf:fuzz` command again. For a more realistic test driver, see the official tutorial on [Fuzzing a Compiler](https://github.com/rohanpadhye/jqf/wiki/Fuzzing-a-Compiler).
+
 ## Compare to blind fuzzing
 
 Run `mvn:test` to run vanilla junit-quickcheck. This will most likely lead to an error message saying that most trials do not meet the assumptions required by the test. 
